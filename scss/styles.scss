@@ -1,0 +1,12 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+$desktop: 800px;
+
+html {
+  box-sizing: border-box;
+  list-style-type: none;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  /*border: 1px solid #333333;*/
+}
