@@ -3,16 +3,30 @@ angular.module('myApp', ['ngMessages'])
 
 		$scope.mealCount = 0; 
 		$scope.tipTotal = 0;
-		$scope.tipHistory = []
+		$scope.tipAvg = 0;
 
 		$scope.baseMealPrice = '';
 		$scope.taxRate = '';
 		$scope.tipPercentage = '';
 
+		$scope.subTotal = 0;
+		$scope.tip = 0;
+		$scope.total = 0;
 
+		$scope.submit = function() {
+			console.log('form submited');
+			if( $scope.myForm.$valid ) {
+				$scope.mealCount++;
+
+				$scope.subTotal = $scope.subTotalCalc();
+				$scope.tip = $scope.tipCalc();
+				$scope.total = $scope.totalCalc();
+
+				$scope.earningsCalc();
+			}
+		};
 
 		$scope.cancel = function() {
-
 			$scope.baseMealPrice = '';
 			$scope.taxRate = '';
 			$scope.tipPercentage = '';
@@ -22,22 +36,22 @@ angular.module('myApp', ['ngMessages'])
 
 		};
 
-		$scope.subTotalCalc = function(baseMealPrice, taxRate) {
-			return ($scope.subTotal = (baseMealPrice * taxRate)+baseMealPrice) 
+		$scope.subTotalCalc = function() {
+			return ($scope.baseMealPrice * $scope.taxRate + $scope.baseMealPrice); 
 		};
 
-		$scope.tipCalc = function(tipPercentage) {
-			return($scope.tip =  $scope.subTotal * (tipPercentage/100))
+		$scope.tipCalc = function() {
+			return  ($scope.subTotal * ($scope.tipPercentage/100));
 		};
 
 		$scope.totalCalc = function() {
-			return($scope.total = $scope.subTotal + $scope.tip)
+			return ($scope.subTotal + $scope.tip);
 		};
 
 		$scope.earningsCalc = function() {
 			$scope.mealCount++;
 
-			$scope.tipTotal += tip;
+			$scope.tipTotal += $scope.tip;
 
 			$scope.tipAvg = $scope.tipTotal/$scope.mealCount;
 		};
