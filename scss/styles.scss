@@ -1,6 +1,7 @@
 @import "bourbon/bourbon";
 @import "neat/neat";
 $desktop: 800px;
+$border: 1px solid #333333;
 
 html {
   box-sizing: border-box;
@@ -8,5 +9,110 @@ html {
 }
 *, *:before, *:after {
   box-sizing: inherit;
-  /*border: 1px solid #333333;*/
+}
+h2 {
+	padding: 1em;
+	margin: 0;
+}
+.outer-container {
+	@include outer-container;
+}
+.header {
+	@include fill-parent;
+	text-align: center;
+}
+.mid-container {
+	@include fill-parent;
+	margin: 5em auto;
+	
+	@media (min-width: $desktop) {
+		@include outer-container;
+	}
+}
+.meal-cont, .charge-earn-cont {
+	@include outer-container;
+
+	@media(min-width: $desktop) {
+		@include span-columns(6);
+	}
+}
+.meal-form, .charge-form, .earn-form {
+	@include fill-parent;
+	border-top: $border;
+}
+.meal-box {
+	border: $border;
+	label {
+		border: 1px solid transparent;
+	}
+}
+.charge-box {
+	border: $border;
+	@media(max-width: $desktop) {
+		margin-top: 2em;
+	}
+}
+.earn-box {
+	border: $border;
+	margin-top: 2em;
+}
+.lineItem {
+	@include fill-parent;
+	line-height: 2em;
+}
+.label {
+	display: inline-block;
+	width: 50%;
+	text-align: right;
+	height: 100%;
+	margin: 0;
+}
+.input {
+	text-align: left;
+	height: 100%;
+	margin: 0;
+}
+.output {
+	display: inline-block;
+	text-align: left;
+	height: 100%;
+	margin: 0;
+}
+.btnLine {
+	@include fill-parent;
+	line-height: 2em;
+	margin: 1em 0;
+	.submitBtn-cont {
+		display: inline-block;
+		width: 50%;
+		text-align: right;
+		padding-right: 0.2em;
+		height: 100%;
+		margin: 0;
+	}
+	.cancelBtn-cont {
+		display: inline-block;
+		height: 100%;
+		margin: 0;
+	}
+}
+.error {
+	@include fill-parent;
+	color: red;
+	text-align: center;
+}
+.footer {
+	@include fill-parent;
+	@include reset-display;
+	line-height: 2em;
+}
+.resetBtn-cont {
+	@include fill-parent;
+	text-align: center;
+	height: 100%;
+	
+	@media(min-width: $desktop) {
+		@include span-columns(6);
+		@include shift(6);
+	}
 }
