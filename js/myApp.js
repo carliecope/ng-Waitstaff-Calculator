@@ -16,7 +16,6 @@ angular.module('myApp', ['ngMessages'])
 		$scope.submit = function() {
 			console.log('form submited');
 			if( $scope.myForm.$valid ) {
-				$scope.mealCount++;
 
 				$scope.subTotal = $scope.subTotalCalc();
 				$scope.tip = $scope.tipCalc();
@@ -26,14 +25,28 @@ angular.module('myApp', ['ngMessages'])
 			}
 		};
 
-		$scope.cancel = function() {
+		$scope.clear = function() {
+			$scope.myForm.$setPristine();
+			
 			$scope.baseMealPrice = '';
 			$scope.taxRate = '';
 			$scope.tipPercentage = '';
 		};
 
 		$scope.reset = function() {
+			$scope.mealCount = 0; 
+			$scope.tipTotal = 0;
+			$scope.tipAvg = 0;
 
+			$scope.baseMealPrice = '';
+			$scope.taxRate = '';
+			$scope.tipPercentage = '';
+
+			$scope.subTotal = 0;
+			$scope.tip = 0;
+			$scope.total = 0;
+
+			$scope.myForm.$setPristine();
 		};
 
 		$scope.subTotalCalc = function() {
