@@ -11,51 +11,126 @@ html {
   box-sizing: inherit;
 }
 h2 {
+	text-align: center;
 	padding: 1em;
 	margin: 0;
 }
-.outer-container {
-	@include outer-container;
+a:link, a:visited {
+    text-decoration: none;
 }
+
+a:hover, a:active {
+    text-decoration: none;
+}
+.outer-cont {
+	@include outer-container; 
+}
+/* ----------header--------------------------*/
 .header {
 	@include fill-parent;
 	text-align: center;
+	h1 {
+		font-size: 2em;
+    	margin: 2em 0 1em 0;
+	}
 }
+
+/*-------------ng-view box--------------------*/
 .mid-container {
 	@include fill-parent;
-	margin: 5em auto;
-	
-	@media (min-width: $desktop) {
-		@include outer-container;
-	}
+	margin: 3em auto;
+	overflow: hidden;
 }
-.meal-cont, .charge-earn-cont {
-	@include outer-container;
+/*-------------Home View-------------------*/
+.home-cont {
+	@include fill-parent;
+	padding: 1em;
+    height: 10em;
+	border: 1px solid;
+	border-radius: 2em;
+	text-align: center;
 
 	@media(min-width: $desktop) {
-		@include span-columns(6);
+		@include span-columns(4);
+		@include shift(4);
 	}
 }
-.meal-form, .charge-form, .earn-form {
+/*-------------New Meal View-------------------*/
+.meal-charge-cont {
 	@include fill-parent;
-	border-top: $border;
+
+	@media(min-width: $desktop) {
+		@include span-columns(4);
+		@include shift(4);
+	}
 }
 .meal-box {
-	border: $border;
+	@include fill-parent;
+	border: 1px solid;
+	border-radius: 2em;
+	
 	label {
 		border: 1px solid transparent;
 	}
 }
 .charge-box {
-	border: $border;
+	@include fill-parent;
+	border: 1px solid;
+	border-radius: 2em;
+	margin-top: 1em;
+	
 	@media(max-width: $desktop) {
 		margin-top: 2em;
 	}
 }
-.earn-box {
-	border: $border;
-	margin-top: 2em;
+.btnLine {
+	@include fill-parent;
+	line-height: 2em;
+	margin: 1em 0;
+	.submitBtn-cont {
+		display: inline-block;
+		width: 50%;
+		text-align: right;
+		padding-right: 0.2em;
+		height: 100%;
+		margin: 0;
+	}
+	.clearBtn-cont {
+		display: inline-block;
+		height: 100%;
+		margin: 0;
+	}
 }
+/*-------------My Earnings View-------------------*/
+.earn-cont {
+
+	@media(min-width: $desktop) {
+		@include span-columns(4);
+		@include shift(4);
+	}
+}
+.earn-box {
+	@include fill-parent;
+	border: 1px solid;
+	border-radius: 2em;
+	margin-top: 1em;
+	
+	@media(max-width: $desktop) {
+		margin-top: 2em;
+	}
+}
+.resetBtn-cont {
+	@include reset-display;
+	@include span-columns(12);
+	display: block;
+	line-height: 2em;
+	margin: 1em 0;
+	text-align: center;
+	#resetBtn {
+
+	}
+}
+/*-------------Components-------------------*/
 .lineItem {
 	@include fill-parent;
 	line-height: 2em;
@@ -78,24 +153,7 @@ h2 {
 	height: 100%;
 	margin: 0;
 }
-.btnLine {
-	@include fill-parent;
-	line-height: 2em;
-	margin: 1em 0;
-	.submitBtn-cont {
-		display: inline-block;
-		width: 50%;
-		text-align: right;
-		padding-right: 0.2em;
-		height: 100%;
-		margin: 0;
-	}
-	.clearBtn-cont {
-		display: inline-block;
-		height: 100%;
-		margin: 0;
-	}
-}
+
 .error {
 	@include fill-parent;
 	color: red;
@@ -106,13 +164,4 @@ h2 {
 	@include reset-display;
 	line-height: 2em;
 }
-.resetBtn-cont {
-	@include fill-parent;
-	text-align: center;
-	height: 100%;
-	
-	@media(min-width: $desktop) {
-		@include span-columns(6);
-		@include shift(6);
-	}
-}
+

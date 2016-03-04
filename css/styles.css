@@ -12,71 +12,135 @@ html {
   box-sizing: inherit; }
 
 h2 {
+  text-align: center;
   padding: 1em;
   margin: 0; }
 
-.outer-container {
+a:link, a:visited {
+  text-decoration: none; }
+
+a:hover, a:active {
+  text-decoration: none; }
+
+.outer-cont {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto; }
-  .outer-container::after {
+  .outer-cont::after {
     clear: both;
     content: "";
     display: table; }
 
+/* ----------header--------------------------*/
 .header {
   width: 100%;
   text-align: center; }
+  .header h1 {
+    font-size: 2em;
+    margin: 2em 0 1em 0; }
 
+/*-------------ng-view box--------------------*/
 .mid-container {
   width: 100%;
-  margin: 5em auto; }
-  @media (min-width: 800px) {
-    .mid-container {
-      max-width: 68em;
-      margin-left: auto;
-      margin-right: auto; }
-      .mid-container::after {
-        clear: both;
-        content: "";
-        display: table; } }
+  margin: 3em auto;
+  overflow: hidden; }
 
-.meal-cont, .charge-earn-cont {
-  max-width: 68em;
-  margin-left: auto;
-  margin-right: auto; }
-  .meal-cont::after, .charge-earn-cont::after {
-    clear: both;
-    content: "";
-    display: table; }
+/*-------------Home View-------------------*/
+.home-cont {
+  width: 100%;
+  padding: 1em;
+  height: 10em;
+  border: 1px solid;
+  border-radius: 2em;
+  text-align: center; }
   @media (min-width: 800px) {
-    .meal-cont, .charge-earn-cont {
+    .home-cont {
       float: left;
       display: block;
       margin-right: 2.35765%;
-      width: 48.82117%; }
-      .meal-cont:last-child, .charge-earn-cont:last-child {
+      width: 31.76157%;
+      margin-left: 34.11922%; }
+      .home-cont:last-child {
         margin-right: 0; } }
 
-.meal-form, .charge-form, .earn-form {
-  width: 100%;
-  border-top: 1px solid #333333; }
+/*-------------New Meal View-------------------*/
+.meal-charge-cont {
+  width: 100%; }
+  @media (min-width: 800px) {
+    .meal-charge-cont {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%;
+      margin-left: 34.11922%; }
+      .meal-charge-cont:last-child {
+        margin-right: 0; } }
 
 .meal-box {
-  border: 1px solid #333333; }
+  width: 100%;
+  border: 1px solid;
+  border-radius: 2em; }
   .meal-box label {
     border: 1px solid transparent; }
 
 .charge-box {
-  border: 1px solid #333333; }
+  width: 100%;
+  border: 1px solid;
+  border-radius: 2em;
+  margin-top: 1em; }
   @media (max-width: 800px) {
     .charge-box {
       margin-top: 2em; } }
 
-.earn-box {
-  border: 1px solid #333333;
-  margin-top: 2em; }
+.btnLine {
+  width: 100%;
+  line-height: 2em;
+  margin: 1em 0; }
+  .btnLine .submitBtn-cont {
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+    padding-right: 0.2em;
+    height: 100%;
+    margin: 0; }
+  .btnLine .clearBtn-cont {
+    display: inline-block;
+    height: 100%;
+    margin: 0; }
 
+/*-------------My Earnings View-------------------*/
+@media (min-width: 800px) {
+  .earn-cont {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    margin-left: 34.11922%; }
+    .earn-cont:last-child {
+      margin-right: 0; } }
+
+.earn-box {
+  width: 100%;
+  border: 1px solid;
+  border-radius: 2em;
+  margin-top: 1em; }
+  @media (max-width: 800px) {
+    .earn-box {
+      margin-top: 2em; } }
+
+.resetBtn-cont {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  display: block;
+  line-height: 2em;
+  margin: 1em 0;
+  text-align: center; }
+  .resetBtn-cont:last-child {
+    margin-right: 0; }
+
+/*-------------Components-------------------*/
 .lineItem {
   width: 100%;
   line-height: 2em; }
@@ -99,22 +163,6 @@ h2 {
   height: 100%;
   margin: 0; }
 
-.btnLine {
-  width: 100%;
-  line-height: 2em;
-  margin: 1em 0; }
-  .btnLine .submitBtn-cont {
-    display: inline-block;
-    width: 50%;
-    text-align: right;
-    padding-right: 0.2em;
-    height: 100%;
-    margin: 0; }
-  .btnLine .clearBtn-cont {
-    display: inline-block;
-    height: 100%;
-    margin: 0; }
-
 .error {
   width: 100%;
   color: red;
@@ -123,17 +171,3 @@ h2 {
 .footer {
   width: 100%;
   line-height: 2em; }
-
-.resetBtn-cont {
-  width: 100%;
-  text-align: center;
-  height: 100%; }
-  @media (min-width: 800px) {
-    .resetBtn-cont {
-      float: left;
-      display: block;
-      margin-right: 2.35765%;
-      width: 48.82117%;
-      margin-left: 51.17883%; }
-      .resetBtn-cont:last-child {
-        margin-right: 0; } }
