@@ -21,23 +21,25 @@
 				<form class="meal-form" name="myForm"novalidate ng-submit="submit()">
 					<div class="lineItem">
 						<label class="label">Base Meal Price: $</label>
-						<input class="input" type="number" ng-model="baseMealPrice" name="baseMealPrice" placeholder="0.00" required>
+						<input class="input" type="number" ng-model="baseMealPrice" name="baseMealPrice" placeholder="0.00" ng-pattern="/\d*.\d{2}/" required>
 					</div>
 					<div class="lineItem" ng-if="myForm.$submitted" ng-messages="myForm.baseMealPrice.$error">
 						<div class="error" ng-message="required">Enter the meal price</div>
+						<div class="error" ng-message="pattern">Enter in form "0.00"</div>
 					</div>
 					
 					<div class="lineItem">
 						<label class="label">Tax Rate: $</label>
-						<input class="input" type="number" ng-model="taxRate" name="taxRate" placeholder="0.00" required>
+						<input class="input" type="number" ng-model="taxRate" name="taxRate" placeholder="0.00" ng-pattern="/\d*.\d{2}/" required>
 					</div>
 					<div class="lineItem" ng-if="myForm.$submitted" ng-messages="myForm.taxRate.$error">
 						<div class="error" ng-message="required">Enter the tax rate</div>
+						<div class="error" ng-message="pattern">Enter in form "0.00"</div>
 					</div>			
 					
 					<div class="lineItem">
 						<label class="label">Tip Percentage: %</label>
-						<input class="input" type="number" ng-model="tipPercentage" name="tipPercentage" placeholder="18" required ng-minlength="1">
+						<input class="input" type="number" ng-model="tipPercentage" name="tipPercentage" placeholder="18" required>
 					</div>
 					<div class="lineItem" ng-if="myForm.$submitted" ng-messages="myForm.tipPercentage.$error">
 						<div class="error" ng-message="required">Enter the tip percentage</div>

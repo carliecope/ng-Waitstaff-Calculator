@@ -69,3 +69,7 @@ angular.module('myApp', ['ngMessages'])
 			$scope.tipAvg = $scope.tipTotal/$scope.mealCount;
 		};
 	});
+
+// \d*(.\d{2})?
+
+
