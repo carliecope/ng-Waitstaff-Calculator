@@ -1,17 +1,30 @@
-angular.module('myApp', ['ngMessages'])
-	.controller('MyCtrl', function($scope) {
-
-		$scope.mealCount = 0; 
-		$scope.tipTotal = 0;
-		$scope.tipAvg = 0;
-
+angular.module('myApp', ['ngMessages', 'ngRoute'])
+	.config(['$routeProvider', function($routeProvider) {
+		$routeProvider.when('/', {
+			templateUrl : 'templates/home.html',
+			controller : 'HomeCtrl'
+		}).when('/home', {
+			templateUrl : 'templates/home.html',
+			controller : 'HomeCtrl'
+		}).when('/myEarnings', {
+			templateUrl : 'templates/myEarnings.html',
+			controller : 'MyEarningsCtrl'
+		}).when('/newMeal', {
+			templateUrl : 'templates/newMeal.html',
+			controller : 'NewMealCtrl'
+		}).otherwise('/error', {
+			template: '<p>Error - Page not Found</p>'
+		});
+	}])
+	.controller('HomeCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+		$rootScope.mealCount = 0; 
+		$rootScope.tipTotal = 0;
+		$rootScope.tipAvg = 0;
+	}])
+	.controller('NewMealCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
 		$scope.baseMealPrice = '';
 		$scope.taxRate = '';
 		$scope.tipPercentage = '';
-
-		$scope.subTotal = 0;
-		$scope.tip = 0;
-		$scope.total = 0;
 
 		$scope.submit = function() {
 			console.log('form submited');
@@ -24,7 +37,6 @@ angular.module('myApp', ['ngMessages'])
 				$scope.earningsCalc();
 			}
 		};
-
 		$scope.clear = function() {
 			$scope.myForm.$setPristine();
 			
@@ -32,23 +44,6 @@ angular.module('myApp', ['ngMessages'])
 			$scope.taxRate = '';
 			$scope.tipPercentage = '';
 		};
-
-		$scope.reset = function() {
-			$scope.mealCount = 0; 
-			$scope.tipTotal = 0;
-			$scope.tipAvg = 0;
-
-			$scope.baseMealPrice = '';
-			$scope.taxRate = '';
-			$scope.tipPercentage = '';
-
-			$scope.subTotal = 0;
-			$scope.tip = 0;
-			$scope.total = 0;
-
-			$scope.myForm.$setPristine();
-		};
-
 		$scope.subTotalCalc = function() {
 			return ($scope.baseMealPrice * $scope.taxRate + $scope.baseMealPrice); 
 		};
@@ -68,7 +63,28 @@ angular.module('myApp', ['ngMessages'])
 
 			$scope.tipAvg = $scope.tipTotal/$scope.mealCount;
 		};
-	});
+	}])
+	.controller('MyEarningsCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+		$scope.subTotal = 0;
+		$scope.tip = 0;
+		$scope.total = 0;
+
+		$scope.reset = function() {
+			$scope.mealCount = 0; 
+			$scope.tipTotal = 0;
+			$scope.tipAvg = 0;
+
+			$scope.baseMealPrice = '';
+			$scope.taxRate = '';
+			$scope.tipPercentage = '';
+
+			$scope.subTotal = 0;
+			$scope.tip = 0;
+			$scope.total = 0;
+
+			$scope.myForm.$setPristine();
+		};
+	}]);
 
 // \d*(.\d{2})?
 
