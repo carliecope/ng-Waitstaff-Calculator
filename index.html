@@ -4,14 +4,17 @@
 	<meta charset="UTF-8">
 	<title>Angular Waitstaff Calculator</title>
 	<meta name="Angular JS Mad Libs" content="An AngularJS Mad Libs game">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-	<script type="text/javascript" src="https://code.angularjs.org/1.4.5/angular-messages.min.js"></script>
+	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css"/>
+	
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body id="outer-container" ng-app="myApp" ng-controller="MyCtrl">
 	<header class="header">
 		<h1>Waitstaff Calculator</h1>
+		<a href="">Home |</a>
+		<a href="">New Meal |</a>
+		<a href="">My Earnings</a>
 	</header>
 	<section class="mid-container">
 		
@@ -98,6 +101,9 @@
 			<button id="resetBtn" ng-click="reset()">Reset</button>
 		</div>
 	</footer>
+	<script type="text/javascript" src="https://code.angularjs.org/1.4.5/angular-messages.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="bower_components/angular-route.js"></script>
 	<script type="text/javascript" src="js/myApp.js"></script>
 </body>
 </html>
