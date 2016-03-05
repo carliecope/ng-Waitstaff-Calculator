@@ -2,90 +2,59 @@ angular.module('myApp', ['ngMessages', 'ngRoute'])
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.when('/', {
 			templateUrl : 'templates/home.html',
-			controller : 'HomeCtrl'
-		}).when('/home', {
-			templateUrl : 'templates/home.html',
-			controller : 'HomeCtrl'
+			controller : 'HomeCtrl as home'
 		}).when('/myEarnings', {
 			templateUrl : 'templates/myEarnings.html',
-			controller : 'MyEarningsCtrl'
+			controller : 'MyEarningsCtrl as earnings'
 		}).when('/newMeal', {
 			templateUrl : 'templates/newMeal.html',
-			controller : 'NewMealCtrl'
+			controller : 'NewMealCtrl as meal'
 		}).otherwise('/error', {
 			template: '<p>Error - Page not Found</p>'
 		});
 	}])
-	.controller('HomeCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
-		$rootScope.mealCount = 0; 
-		$rootScope.tipTotal = 0;
-		$rootScope.tipAvg = 0;
-	}])
-	.controller('NewMealCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
-		$scope.baseMealPrice = '';
-		$scope.taxRate = '';
-		$scope.tipPercentage = '';
+	.controller('HomeCtrl', function($rootScope) {
+		
+	})
+	.controller('NewMealCtrl', function($rootScope) {
 
-		$scope.submit = function() {
-			console.log('form submited');
-			if( $scope.myForm.$valid ) {
+		this.submit = function() {
 
-				$scope.subTotal = $scope.subTotalCalc();
-				$scope.tip = $scope.tipCalc();
-				$scope.total = $scope.totalCalc();
-
-				$scope.earningsCalc();
-			}
-		};
-		$scope.clear = function() {
-			$scope.myForm.$setPristine();
+			//Calculate Subtotal (Meal plus tax)
+			$rootScope.subTotal = this.baseMealPrice * this.taxRate + this.baseMealPrice;
 			
-			$scope.baseMealPrice = '';
-			$scope.taxRate = '';
-			$scope.tipPercentage = '';
+			//Calculate Tip
+			$rootScope.tip = $rootScope.subTotal * (this.tipPercentage/100);
+			
+			//Calculate Total (Subtotal plus tip)
+			$rootScope.total = $rootScope.subTotal + $rootScope.tip;
+
+			//Increment Meal Count
+			$rootScope.mealCount++;
+
+			//Calculate Earnings
+			$rootScope.tipTotal += $rootScope.tip;
+			$rootScope.tipAvg = $rootScope.tipTotal/$rootScope.mealCount;
+
+			
+			//Clear Input values
+			this.baseMealPrice = '';
+			this.taxRate = '';
+			this.tipPercentage = '';
 		};
-		$scope.subTotalCalc = function() {
-			return ($scope.baseMealPrice * $scope.taxRate + $scope.baseMealPrice); 
+			$rootScope.mealCount = 0; 
+			$rootScope.tipTotal = 0;
+			$rootScope.tipAvg = 0;
+	})
+	.controller('MyEarningsCtrl', function($rootScope) {
+
+		this.reset = function() {
+			$rootScope.mealCount = 0; 
+			$rootScope.tipTotal = 0;
+			$rootScope.tipAvg = 0;
+
+			$rootScope.subTotal = 0;
+			$rootScope.tip = 0;
+			$rootScope.total = 0;
 		};
-
-		$scope.tipCalc = function() {
-			return  ($scope.subTotal * ($scope.tipPercentage/100));
-		};
-
-		$scope.totalCalc = function() {
-			return ($scope.subTotal + $scope.tip);
-		};
-
-		$scope.earningsCalc = function() {
-			$scope.mealCount++;
-
-			$scope.tipTotal += $scope.tip;
-
-			$scope.tipAvg = $scope.tipTotal/$scope.mealCount;
-		};
-	}])
-	.controller('MyEarningsCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
-		$scope.subTotal = 0;
-		$scope.tip = 0;
-		$scope.total = 0;
-
-		$scope.reset = function() {
-			$scope.mealCount = 0; 
-			$scope.tipTotal = 0;
-			$scope.tipAvg = 0;
-
-			$scope.baseMealPrice = '';
-			$scope.taxRate = '';
-			$scope.tipPercentage = '';
-
-			$scope.subTotal = 0;
-			$scope.tip = 0;
-			$scope.total = 0;
-
-			$scope.myForm.$setPristine();
-		};
-	}]);
-
-// \d*(.\d{2})?
-
-
+	});

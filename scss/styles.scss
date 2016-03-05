@@ -2,7 +2,6 @@
 @import "neat/neat";
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 $desktop: 800px;
-$border: 1px solid #333333;
 
 html {
   box-sizing: border-box;
@@ -45,11 +44,13 @@ a:hover, a:active {
 	text-align: center;
 
 	#title {
-		font-size: 3em;
-		margin: 0;
+		font-size: 2.75em;
+	    margin: 1em 0;
+	    padding: 0.1em;
     	
     	@media(min-width: $desktop) {
-    		margin: 2em 0 1em 0;
+    		font-size: 3em;
+    		margin: 1em 0 0.5em 0;
     	}
 	}
 	#strong {
@@ -67,8 +68,12 @@ a:hover, a:active {
 /*-------------ng-view box--------------------*/
 .mid-container {
 	@include fill-parent;
-	margin: 3em auto;
 	overflow: hidden;
+	margin: 0 auto;
+	
+	@media(min-width:$desktop) {
+		margin: 3em auto;
+	}
 }
 /*-------------Home View-------------------*/
 .home-cont {
@@ -197,6 +202,7 @@ a:hover, a:active {
 
 		@media(min-width: $desktop) {
 			background-color: #E7E2D3;
+			border: 1px solid #E7E2D3;
 		}
 	}
 }
@@ -225,7 +231,7 @@ a:hover, a:active {
 }
 .error {
 	@include fill-parent;
-	color: #2A221E;
+	color: #C11932;
 	text-align: center;
 }
 .footer {
