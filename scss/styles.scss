@@ -52,6 +52,9 @@ a:hover, a:active {
     		margin: 2em 0 1em 0;
     	}
 	}
+	#strong {
+		font-weight: 900;
+	}
 	h2 {
 		display: inline-block;
 	}
@@ -140,6 +143,9 @@ a:hover, a:active {
 	    border: 1px solid #2A221E;
 	    border-radius: 0.3em;
 	}
+	#submitBtn:focus, #clearBtn:focus {
+		outline: none;
+	}
 	#submitBtn:hover, #clearBtn:hover {
 		background-color: #3E2C21;
 		cursor: pointer;
@@ -181,6 +187,9 @@ a:hover, a:active {
 		    color: #2A221E;
 		    border: 1px solid white;	
 		}
+	}
+	#resetBtn:focus {
+		outline: none;
 	}
 	#resetBtn:hover {
 		background-color: #3E2C21;

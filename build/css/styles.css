@@ -49,10 +49,10 @@ a:hover, a:active {
   text-align: center; }
   .header #title {
     font-size: 3em;
-    margin: 2em 0 1em 0; }
+    margin: 0; }
     @media (min-width: 800px) {
       .header #title {
-        margin: 0; } }
+        margin: 2em 0 1em 0; } }
   .header h2 {
     display: inline-block; }
   @media (min-width: 800px) {
@@ -146,6 +146,8 @@ a:hover, a:active {
     color: white;
     border: 1px solid #2A221E;
     border-radius: 0.3em; }
+  .btnLine #submitBtn:focus, .btnLine #clearBtn:focus {
+    outline: none; }
   .btnLine #submitBtn:hover, .btnLine #clearBtn:hover {
     background-color: #3E2C21;
     cursor: pointer; }
@@ -192,6 +194,8 @@ a:hover, a:active {
         background-color: white;
         color: #2A221E;
         border: 1px solid white; } }
+  .resetBtn-cont #resetBtn:focus {
+    outline: none; }
   .resetBtn-cont #resetBtn:hover {
     background-color: #3E2C21;
     cursor: pointer; }
