@@ -12,11 +12,16 @@ angular.module('myApp', ['ngMessages', 'ngRoute'])
 		}).otherwise('/error', {
 			template: '<p>Error - Page not Found</p>'
 		});
-	}])
-	.controller('HomeCtrl', function($rootScope) {
-		
+	}]) 
+	.run(function($rootScope) {
+		$rootScope.mealCount = 0;
+		$rootScope.tipTotal = 0;
+		$rootScope.tipAvg = 0;
 	})
-	.controller('NewMealCtrl', function($rootScope) {
+	.controller('HomeCtrl', [ '$rootScope', function($rootScope) {
+		
+	}])
+	.controller('NewMealCtrl', ['$rootScope', '$scope', function($rootScope, $scope) {
 
 		this.submit = function() {
 
@@ -29,24 +34,26 @@ angular.module('myApp', ['ngMessages', 'ngRoute'])
 			//Calculate Total (Subtotal plus tip)
 			$rootScope.total = $rootScope.subTotal + $rootScope.tip;
 
-			//Increment Meal Count
+			//Increment Meal Count {
 			$rootScope.mealCount++;
 
 			//Calculate Earnings
-			$rootScope.tipTotal += $rootScope.tip;
-			$rootScope.tipAvg = $rootScope.tipTotal/$rootScope.mealCount;
-
+			$rootScope.tipTotal =+ $rootScope.tip;
+			if($rootScope.mealCount != 0) {
+				$rootScope.tipAvg = $rootScope.tipTotal/$rootScope.mealCount;
+			}
 			
 			//Clear Input values
 			this.baseMealPrice = '';
 			this.taxRate = '';
 			this.tipPercentage = '';
+
+			$scope.myForm.$setPristine(); 
+
 		};
-			$rootScope.mealCount = 0; 
-			$rootScope.tipTotal = 0;
-			$rootScope.tipAvg = 0;
-	})
-	.controller('MyEarningsCtrl', function($rootScope) {
+			
+	}])
+	.controller('MyEarningsCtrl', ['$rootScope', function($rootScope) {
 
 		this.reset = function() {
 			$rootScope.mealCount = 0; 
@@ -57,4 +64,4 @@ angular.module('myApp', ['ngMessages', 'ngRoute'])
 			$rootScope.tip = 0;
 			$rootScope.total = 0;
 		};
-	});
+	}]);
