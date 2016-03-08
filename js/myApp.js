@@ -18,7 +18,7 @@ angular.module('myApp', ['ngMessages', 'ngRoute'])
 		$rootScope.tipTotal = 0;
 		$rootScope.tipAvg = 0;
 	})
-	.controller('HomeCtrl', [ '$rootScope', function($rootScope) {
+	.controller('HomeCtrl', ['$rootScope', function($rootScope) {
 		
 	}])
 	.controller('NewMealCtrl', ['$rootScope', '$scope', function($rootScope, $scope) {
