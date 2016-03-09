@@ -1,4 +1,4 @@
-angular.module('myApp', ['ngMessages', 'ngRoute'])
+angular.module('myApp', ['ngMessages', 'ngRoute', 'ngAnimate'])
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.when('/', {
 			templateUrl : 'templates/home.html',
@@ -39,7 +39,7 @@ angular.module('myApp', ['ngMessages', 'ngRoute'])
 
 			//Calculate Earnings
 			$rootScope.tipTotal =+ $rootScope.tip;
-			if($rootScope.mealCount != 0) {
+			if($rootScope.mealCount !== 0) {
 				$rootScope.tipAvg = $rootScope.tipTotal/$rootScope.mealCount;
 			}
 			

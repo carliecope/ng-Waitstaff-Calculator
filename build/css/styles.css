@@ -70,13 +70,18 @@ a:hover, a:active {
         margin-right: 0; } }
 
 /*-------------ng-view box--------------------*/
-.mid-container {
+.animate_view {
   width: 100%;
   overflow: hidden;
   margin: 0 auto; }
   @media (min-width: 800px) {
-    .mid-container {
+    .animate_view {
       margin: 3em auto; } }
+  .animate_view.ng-enter {
+    transition: 0.2s linear all;
+    opacity: 0; }
+  .animate_view.ng-enter.ng-enter-active {
+    opacity: 1; }
 
 /*-------------Home View-------------------*/
 .home-cont {
@@ -236,7 +241,7 @@ a:hover, a:active {
 
 .error {
   width: 100%;
-  color: #2A221E;
+  color: #C11932;
   text-align: center; }
 
 .footer {

@@ -66,7 +66,7 @@ a:hover, a:active {
 }
 
 /*-------------ng-view box--------------------*/
-.mid-container {
+.animate_view {
 	@include fill-parent;
 	overflow: hidden;
 	margin: 0 auto;
@@ -74,7 +74,16 @@ a:hover, a:active {
 	@media(min-width:$desktop) {
 		margin: 3em auto;
 	}
+
+	&.ng-enter { 
+		transition: 0.2s linear all;
+		opacity: 0;
+	}
+	&.ng-enter.ng-enter-active { 
+		opacity: 1;
+	}
 }
+
 /*-------------Home View-------------------*/
 .home-cont {
 	@include fill-parent;
