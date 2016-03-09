@@ -49,7 +49,6 @@ angular.module('myApp', ['ngMessages', 'ngRoute', 'ngAnimate'])
 			this.tipPercentage = '';
 
 			$scope.myForm.$setPristine(); 
-
 		};
 			
 	}])
