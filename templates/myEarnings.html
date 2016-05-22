@@ -1,0 +1,22 @@
+<div class="earn-cont">
+	<div class="earn-box">
+		<h2>My Earnings Info</h2>
+		<div class="earn-form">
+			<div class="lineItem">
+				<div class="label">Tip Total: </div>
+				<div class="output">{{ tipTotal | currency }}</div>
+			</div>
+			<div class"lineItem">
+				<div class="label">Meal Count:   </div>
+				<div class="output">{{ mealCount | number }}</div>
+			</div>
+			<div class="lineItem">
+				<div class="label">Average Tip per Meal: </div>
+				<div class="output">{{ tipAvg | currency }}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="resetBtn-cont">
+	<button id="resetBtn" ng-click="earnings.reset()">Reset</button>
+</div>

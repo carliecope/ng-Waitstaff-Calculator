@@ -1,0 +1,261 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+$desktop: 800px;
+
+html {
+  box-sizing: border-box;
+  list-style-type: none;
+
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #2A221E;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+h2 {
+	text-align: center;
+	padding-bottom: 1em;
+	margin: 0;
+}
+a:link, a:visited {
+    text-decoration: none;
+    color: #2A221E;
+}
+
+a:hover, a:active {
+    text-decoration: none;
+    color: #2A221E;
+}
+.outer-cont {
+	@include outer-container;
+	background: #F6F1EA;
+	background-image: none;
+}
+.background {
+	background-color: #F6F1EA;
+	background-size: cover;
+	background-repeat: no-repeat;
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+	height: 100vh;
+
+	@media screen and (min-width: $desktop) {
+		background-image: url('../img/background.jpg');
+
+	}
+}
+/* ----------header--------------------------*/
+.header {
+	@include fill-parent;
+	text-align: center;
+
+	#title {
+		font-size: 2.75em;
+	    margin: 1em 0;
+	    padding: 0.1em;
+    	
+    	@media(min-width: $desktop) {
+    		font-size: 3em;
+    		margin: 1em 0 0.5em 0;
+    	}
+	}
+	#strong {
+		font-weight: 900;
+	}
+	h2 {
+		display: inline-block;
+	}
+	@media(min-width: $desktop) {
+		@include span-columns(6);
+		@include shift(3);
+	}
+}
+
+/*-------------ng-view box--------------------*/
+.animate_view {
+	@include fill-parent;
+	overflow: hidden;
+	margin: 0 auto;
+	
+	@media(min-width:$desktop) {
+		margin: 3em auto;
+	}
+
+	&.ng-enter { 
+		transition: 0.2s linear all;
+		opacity: 0;
+	}
+	&.ng-enter.ng-enter-active { 
+		opacity: 1;
+	}
+}
+
+/*-------------Home View-------------------*/
+.home-cont {
+	@include fill-parent;
+	background: #F6F1EA;
+	opacity: 0.95; 
+	padding: 1em;
+    height: 10em;
+	border: 1px solid transparent;
+	border-radius: 2em;
+	text-align: center;
+
+	@media(min-width: $desktop) {
+		@include span-columns(6);
+		@include shift(3);
+	}
+}
+/*-------------New Meal View-------------------*/
+.meal-charge-cont {
+	@include fill-parent;
+
+	@media(min-width: $desktop) {
+		@include span-columns(6);
+		@include shift(3);
+	}
+}
+.meal-box {
+	@include fill-parent;
+	background: #F6F1EA;
+	opacity: 0.95; 
+	padding: 1em;
+	border: 1px solid transparent;
+	border-radius: 2em;
+	
+	label {
+		border: 1px solid transparent;
+	}
+}
+.charge-box {
+	@include fill-parent;
+	background: #F6F1EA;
+	opacity: 0.95; 
+	padding: 1em;
+	border: 1px solid transparent;
+	border-radius: 2em;
+	margin-top: 1em;
+	
+	@media(max-width: $desktop) {
+		margin-top: 2em;
+	}
+}
+.btnLine {
+	@include fill-parent;
+	line-height: 2em;
+	margin: 1em 0;
+	.submitBtn-cont {
+		display: inline-block;
+		width: 50%;
+		text-align: right;
+		padding-right: 0.2em;
+		height: 100%;
+		margin: 0;
+	}
+	.clearBtn-cont {
+		display: inline-block;
+		height: 100%;
+		margin: 0;
+	}
+	#submitBtn, #clearBtn {
+		background-color: #2A221E;
+	    color: white;
+	    border: 1px solid #2A221E;
+	    border-radius: 0.3em;
+	}
+	#submitBtn:focus, #clearBtn:focus {
+		outline: none;
+	}
+	#submitBtn:hover, #clearBtn:hover {
+		background-color: #3E2C21;
+		cursor: pointer;
+	}
+}
+/*-------------My Earnings View-------------------*/
+.earn-cont {
+
+	@media(min-width: $desktop) {
+		@include span-columns(6);
+		@include shift(3);
+	}
+}
+.earn-box {
+	@include fill-parent;
+	background: #F6F1EA;
+	opacity: 0.95; 
+	padding: 1em;
+	border: 1px solid transparent;
+	border-radius: 2em;
+	margin-top: 1em;
+}
+.resetBtn-cont {
+	@include span-columns(12);
+	display: block;
+	line-height: 2em;
+	margin: 1em 0;
+	text-align: center;
+	#resetBtn {
+		background-color: #2A221E;
+	    color: white;
+	    border: 1px solid #2A221E;
+	    border-radius: 0.3em;
+	    padding: 0 0.7em;
+
+	    @media(min-width: $desktop) {
+	    	background-color: white;
+		    color: #2A221E;
+		    border: 1px solid white;	
+		}
+	}
+	#resetBtn:focus {
+		outline: none;
+	}
+	#resetBtn:hover {
+		background-color: #3E2C21;
+		cursor: pointer;
+
+		@media(min-width: $desktop) {
+			background-color: #E7E2D3;
+			border: 1px solid #E7E2D3;
+		}
+	}
+}
+/*-------------Components-------------------*/
+.lineItem {
+	@include fill-parent;
+	line-height: 2em;
+}
+.label {
+	display: inline-block;
+	width: 50%;
+	text-align: right;
+	height: 100%;
+	margin: 0;
+}
+.input {
+	text-align: left;
+	height: 100%;
+	margin: 0;
+}
+.output {
+	display: inline-block;
+	text-align: left;
+	height: 100%;
+	margin: 0;
+}
+.error {
+	@include fill-parent;
+	color: #C11932;
+	text-align: center;
+}
+.footer {
+	@include fill-parent;
+	line-height: 2em;
+}
+
