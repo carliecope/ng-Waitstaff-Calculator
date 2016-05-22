@@ -2,7 +2,6 @@ var gulp = require('gulp');
 
 var jshint = require('gulp-jshint');
 var sass = require('gulp-sass');
-var imagemin = require('gulp-imagemin');
 var browserify = require('browserify');
 var uglify = require('gulp-uglify');
 var minifyHTML = require('gulp-minify-html');
@@ -20,15 +19,15 @@ gulp.task('jshint', function() {
 
 // Compile Sass task
 gulp.task('sass', function() {
-  return gulp.src('scss/*.scss')
+  return gulp.src('app/scss/*.scss')
     .pipe(sass())
-    .pipe(gulp.dest('css'));
+    .pipe(gulp.dest('./app/css'));
 }); 
 
 // Watch task
 gulp.task('watch', function() {
-  gulp.watch('js/*.js', ['jshint']);
-  gulp.watch('scss/*.scss', ['sass']);
+  gulp.watch('app/js/*.js', ['jshint']);
+  gulp.watch('app/scss/*.scss', ['sass']);
 }); 
 
 // Minify index
@@ -37,16 +36,6 @@ gulp.task('html', function() {
     .pipe(minifyHTML())
     .pipe(gulp.dest('build/'));
 }); 
-/*
-JavaScript build task, removes whitespace and concatenates all files
-gulp.task('scripts', function() {
-  return browserify('js/main.js')
-    .bundle()
-    .pipe(source('app.js'))
-    .pipe(buffer())
-    .pipe(uglify())
-    .pipe(gulp.dest('build/js'));
-}); */
 
 // Styles build task, concatenates all the files
 gulp.task('styles', function() {
@@ -55,15 +44,8 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('build/css'));
 });
 
-// Image optimization task
-gulp.task('images', function() {
-  return gulp.src('img/*')
-    .pipe(imagemin())
-    .pipe(gulp.dest('build/img'));
-});
-
 // Default task
 gulp.task('default', ['jshint', 'sass', 'watch']);
 
 // Build task
-gulp.task('build', ['jshint', 'sass', 'html', 'styles', 'images']);
+gulp.task('build', ['jshint', 'sass', 'html', 'styles']);

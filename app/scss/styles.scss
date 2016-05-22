@@ -195,7 +195,6 @@ a:hover, a:active {
 	margin-top: 1em;
 }
 .resetBtn-cont {
-	@include reset-display;
 	@include span-columns(12);
 	display: block;
 	line-height: 2em;
@@ -257,7 +256,6 @@ a:hover, a:active {
 }
 .footer {
 	@include fill-parent;
-	@include reset-display;
 	line-height: 2em;
 }
 

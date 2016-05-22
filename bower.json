@@ -1,5 +1,5 @@
 {
-  "name": "ng-Waitstaff-Calculator",
+  "name": "ng-waitstaff-calculator",
   "homepage": "https://github.com/carliecope/ng-Waitstaff-Calculator",
   "authors": [
     "Carlie Copeland <carliecope@gmail.com>"
@@ -14,5 +14,13 @@
     "angular-route": "^1.5.0",
     "angular-messages": "^1.5.0",
     "angular-animate": "^1.5.0"
-  }
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
 }
